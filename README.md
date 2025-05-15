@@ -19,12 +19,7 @@
 
 ## 快速安装
 
-1. 安装用户脚本管理器：
-
-   - [Tampermonkey](https://www.tampermonkey.net/) (推荐)
-   - [Violentmonkey](https://violentmonkey.github.io/)
-
-2. 点击安装链接 ➡️ [一键安装](https://your-domain.com/main.user.js)
+1. 点击安装链接 ➡️ [一键安装](https://update.greasyfork.org/scripts/536050/knife4j%E6%96%87%E6%A1%A3%20API%E6%96%87%E6%A1%A3%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7%28%E8%AA%89%E5%AD%98%E7%89%88%29.user.js)
 
 ## 使用指南
 
