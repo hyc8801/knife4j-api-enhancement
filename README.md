@@ -37,4 +37,5 @@
    - 📁 模块文件复制：点击后会生成并复制当前模块的所有接口函数
 
 ## 💡 参考示例
-![enter image description here](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/31eebe7c468b4f51945173118f099538~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5bed:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA0OTE0NTQwMzYwOTY4OCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1747724175&x-orig-sign=TJF9DQrvVUXw6zzZ4GWm%2FROlM2w%3D "enter image title here")
+
+![image](https://github.com/user-attachments/assets/1d429917-58ec-402a-83d8-09cc47843dd6)
