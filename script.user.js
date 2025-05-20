@@ -113,7 +113,8 @@
     // 为文件span添加可识别的class
     btn.innerHTML = `
       <div class="api-loading"></div>
-      <span class="btn-text"><i>📋</i>复制接口/<span class="copy-file-btn">文件</span></span>
+      <span class="btn-text"><span>📋</span>复制接口</span>/
+      <span class="copy-file-btn">文件</span>
     `;
     btn.id = 'main-copy-btn';
 
