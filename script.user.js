@@ -229,9 +229,17 @@
 
     // 请求参数处理
     const requestParams = [];
-    if (['post', 'put'].includes(methodLower) && hasBody) {
-      requestParams.push('data');
+
+    // 修复逻辑：POST/PUT方法必须保留data参数位置
+    if (['post', 'put'].includes(methodLower)) {
+      if (hasBody) {
+        requestParams.push('data');
+      } else if (hasQuery) {
+        // 当没有body但有query参数时，显式添加undefined占位
+        requestParams.push('undefined');
+      }
     }
+
     if (config.length) {
       requestParams.push(`{ ${config.join(', ')} }`);
     }
@@ -264,7 +272,9 @@ export const ${functionName} = ${paramStr} => {
     if (!groupName) throw new Error('无法获取分组名称');
 
     const apiDocs = await fetchApiDocs(groupName);
-    const apiURL = document.querySelector('.ant-tabs-tabpane-active .knife4j-api-summary-path').innerText;
+    const apiURL = document.querySelector(
+      '.ant-tabs-tabpane-active .ant-tabs-tabpane-active .knife4j-api-summary-path'
+    ).innerText;
     const apiURLObjs = apiDocs.paths[apiURL];
 
     const method = Object.keys(apiURLObjs).find((method) => {
