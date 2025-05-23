@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         knife4j文档 API文档增强工具(誉存版)
 // @namespace    https://github.com/hyc8801/knife4j-api-enhancement
-// @version      1.22
+// @version      1.23
 // @license      MIT
 // @description  knife4j文档页面添加一键复制接口/文档按钮
+// @updateURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
+// @downloadURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
 // @author       @hyc
 // @match        */doc.html
 // @grant        unsafeWindow
