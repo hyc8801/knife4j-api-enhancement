@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         knife4j文档 API文档增强工具(誉存版)
 // @namespace    https://github.com/hyc8801/knife4j-api-enhancement
-// @version      1.23
+// @version      2.23
 // @license      MIT
 // @description  knife4j文档页面添加一键复制接口/文档按钮
 // @updateURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
 // @downloadURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
 // @author       @hyc
+// @match        */**/doc.html
 // @match        */doc.html
 // @grant        unsafeWindow
 // @grant        GM_addStyle
@@ -136,14 +137,25 @@
     return btn;
   }
 
-  // 从URL中提取分组名称
+  /**
+   * 从URL中提取分组名称
+   * @returns [groupName, tabName, operationId]
+   */
   function getHashSegments() {
     const hash = window.location.hash;
-    // 匹配 #/路径段1/路径段2/路径段3 的格式
-    return hash
-      .split('/')
-      .filter((segment) => segment && segment !== '#') // 过滤空值和#
-      .map((segment) => decodeURIComponent(segment));
+    if (hash) {
+      // 匹配 #/路径段1/路径段2/路径段3 的格式
+      return hash
+        .split('/')
+        .filter((segment) => segment && segment !== '#') // 过滤空值和#
+        .map((segment) => decodeURIComponent(segment));
+    }
+    
+    return [
+      document.querySelector('#sbu-group-sel').value,
+      document.querySelector('.menuLi.active').parentElement.previousElementSibling.innerText.trim().split('\n')[0],
+      undefined,
+    ]
   }
 
   // 获取API文档数据
@@ -154,7 +166,7 @@
     return new Promise((resolve, reject) => {
       GM_xmlhttpRequest({
         method: 'GET',
-        url: `${window.location.origin}/v2/api-docs?group=${encodeURIComponent(groupName)}`,
+        url: `${window.location.origin}${window.location.pathname.replace('/doc.html', '')}/v2/api-docs?group=${encodeURIComponent(groupName)}`,
         onload: function (response) {
           btn.classList.remove('loading');
           try {
@@ -274,19 +286,28 @@ export const ${functionName} = ${paramStr} => {
     if (!groupName) throw new Error('无法获取分组名称');
 
     const apiDocs = await fetchApiDocs(groupName);
-    const apiURL = document.querySelector(
+    let method;
+    
+    let apiURL = document.querySelector(
       '.ant-tabs-tabpane-active .ant-tabs-tabpane-active .knife4j-api-summary-path'
-    ).innerText;
+    )?.innerText
+
+    if (!apiURL) {
+      // 老版本兼容
+      const id = document.querySelector('ul.layui-tab-title > li.layui-this[lay-id]').getAttribute("lay-id").replace('tab', '');
+      apiURL = document.querySelector(`#contentDoc${id} p:first-of-type code`)?.textContent
+      method = document.querySelector(`#contentDoc${id} p:nth-of-type(2) code`)?.textContent.toLocaleLowerCase()
+    }
     const apiURLObjs = apiDocs.paths[apiURL];
-
-    const method = Object.keys(apiURLObjs).find((method) => {
-      if (operationId === apiURLObjs[method].operationId) {
-        apiURLObjs[method].method = method;
-        return true;
-      }
-      return false;
-    });
-
+    if (operationId) {
+      method = Object.keys(apiURLObjs).find((method) => {
+        if (operationId === apiURLObjs[method].operationId) {
+          apiURLObjs[method].method = method;
+          return true;
+        }
+        return false;
+      });
+    }
     const methodObj = apiURLObjs[method];
 
     if (apiURL && methodObj) {
@@ -300,7 +321,6 @@ export const ${functionName} = ${paramStr} => {
   async function handleBttonFileClick() {
     const [groupName, tabName] = getHashSegments();
     const apiDocs = await fetchApiDocs(groupName);
-
     const codes = Object.entries(apiDocs.paths)
       .filter(([, apiURLObjs]) => Object.values(apiURLObjs).some((m) => m.tags?.includes(tabName)))
       .map(([apiURL, apiURLObjs]) => {
