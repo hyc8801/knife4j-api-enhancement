@@ -6,22 +6,18 @@
 
 ## ✨ 功能亮点
 
-✅ 智能识别当前接口路径  
 ✅ 自动生成带注释的请求函数  
 ✅ 支持两种复制模式：
 
 - 📋 单接口复制（精确到当前查看的接口）
 - 📁 模块文件复制（整组 API 一键生成）  
-  ✅ 可视化操作反馈（成功/错误提示）  
-  ✅ 自动加载最新 API 文档数据  
-  ✅ 完美样式隔离（不影响原页面布局）
 
 ## 📦 快速安装
 
 1. 第一步： 下载安装 Tampermonkey 浏览器插件：
    - [🔗Chrome 插件市场-需梯子](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-   - [🔗 极简插件市场-无须梯子](https://chrome.zzzmh.cn/info/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-2. 第二步： 点击安装链接 ➡️ [🔗 一键直达安装脚本](https://update.greasyfork.org/scripts/536050/knife4j%E6%96%87%E6%A1%A3%20API%E6%96%87%E6%A1%A3%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7%28%E8%AA%89%E5%AD%98%E7%89%88%29.user.js)
+   - [🔗 极简插件市场-无须梯子（推荐）](https://chrome.zzzmh.cn/info/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+2. 第二步： 点击安装链接 ➡️ [🔗 一键直达安装脚本](https://openuserjs.org/scripts/HYC8801/knife4j%E6%96%87%E6%A1%A3_API%E6%96%87%E6%A1%A3%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7(%E8%AA%89%E5%AD%98%E7%89%88))
 
 ## 📕 使用指南
 

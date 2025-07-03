@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         knife4j文档 API文档增强工具(誉存版)
 // @namespace    https://github.com/hyc8801/knife4j-api-enhancement
-// @version      2.23
+// @version      2.33
 // @license      MIT
 // @description  knife4j文档页面添加一键复制接口/文档按钮
 // @updateURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
@@ -83,6 +83,12 @@
 
       @keyframes spin {
         to { transform: rotate(360deg); }
+      }
+
+      .treeTable .treeTable-icon:hover, .ant-table-tbody .ant-table-row .ant-table-row-cell-break-word:first-of-type:hover  {
+        // 不添加下划线，有点丑，有更好的样式么，最好只是针对文字的,文字背景色
+        // cursor: pointer;
+        // text-decoration: none;
       }
   `);
   function copyToClipboard(text) {
@@ -338,6 +344,19 @@ export const ${functionName} = ${paramStr} => {
   // 主初始化函数
   function init() {
     createMainButton();
+
+    document.body.addEventListener('click', function(e) {
+      if (!e.isTrusted) return; // 过滤掉由脚本触发的事件
+      const oldSpan = e.target.closest('.treeTable .treeTable-icon');
+      const newSpan = e.target.closest('.ant-table-tbody .ant-table-row .ant-table-row-cell-break-word:first-of-type');
+      const span = oldSpan || newSpan;
+      if (span) {
+        const text = span.textContent.trim(); // 获取元素内的全部文本（包括子元素）
+        e.stopImmediatePropagation();
+        copyToClipboard(text);
+        showNotification(`已复制：${text}`);
+      }
+    });
 
     console.log('API文档增强工具(专业版)已加载');
   }
