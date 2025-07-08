@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         knife4j文档 API文档增强工具(誉存版)
 // @namespace    https://github.com/hyc8801/knife4j-api-enhancement
-// @version      2.33
+// @version      2.34
 // @license      MIT
 // @description  knife4j文档页面添加一键复制接口/文档按钮
 // @updateURL https://github.com/hyc8801/knife4j-api-enhancement/raw/master/script.user.js
@@ -89,6 +89,13 @@
         // 不添加下划线，有点丑，有更好的样式么，最好只是针对文字的,文字背景色
         // cursor: pointer;
         // text-decoration: none;
+        // 放大
+        transition: 0.3s;
+        // transform: scale(1.2);
+        color: #1890ff;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
       }
   `);
   function copyToClipboard(text) {

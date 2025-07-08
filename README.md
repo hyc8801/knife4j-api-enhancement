@@ -15,8 +15,8 @@
 ## 📦 快速安装
 
 1. 第一步： 下载安装 Tampermonkey 浏览器插件：
-   - [🔗Chrome 插件市场-需梯子](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
    - [🔗 极简插件市场-无须梯子（推荐）](https://chrome.zzzmh.cn/info/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - [🔗Chrome 插件市场-需梯子](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 2. 第二步： 点击安装链接 ➡️ [🔗 一键直达安装脚本](https://openuserjs.org/scripts/HYC8801/knife4j%E6%96%87%E6%A1%A3_API%E6%96%87%E6%A1%A3%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7(%E8%AA%89%E5%AD%98%E7%89%88))
 
 ## 📕 使用指南
